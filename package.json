@@ -1,0 +1,35 @@
+{
+  "name": "cypress-typescript-api-testing",
+  "version": "1.0.0",
+  "description": "API testing using cypress.io",
+  "scripts": {
+    "open": "cypress open --e2e --browser electron",
+    "test": "cypress run --e2e",
+    "pretty": "prettier --write \"./**/*.{yml,ts,tsx,json}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burakkaygusuz/cypress-typescript-api-testing.git"
+  },
+  "keywords": [
+    "cypress",
+    "api-testing",
+    "typescript"
+  ],
+  "author": "Burak Kaygusuz",
+  "license": "ISC",
+  "devDependencies": {
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@faker-js/faker": "^8.0.0-beta.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "cypress": "^12.11.0",
+    "esbuild": "^0.17.18",
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-cypress": "^2.13.3",
+    "prettier": "2.8.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}

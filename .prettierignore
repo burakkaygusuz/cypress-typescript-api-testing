@@ -1,0 +1,7 @@
+node_modules/
+.git/
+.vscode/
+package.json
+package-lock.json
+.gitignore
+LICENSE
