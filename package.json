@@ -22,7 +22,7 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@faker-js/faker": "^8.0.2",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
-    "@typescript-eslint/parser": "^5.59.8",
+    "@typescript-eslint/parser": "^5.60.1",
     "cypress": "^12.13.0",
     "esbuild": "^0.17.18",
     "eslint": "^8.41.0",
