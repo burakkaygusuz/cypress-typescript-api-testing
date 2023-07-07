@@ -32,14 +32,7 @@ const getBooking = (
   });
 };
 
-const createBooking = (booking: {
-  firstname: string;
-  lastname: string;
-  totalprice: number;
-  depositpaid: boolean;
-  bookingdates: { checkin: string; checkout: string };
-  additionalneeds: string;
-}) => {
+const createBooking = (booking: Booking) => {
   return cy.request({
     method: 'POST',
     url: '/booking',
