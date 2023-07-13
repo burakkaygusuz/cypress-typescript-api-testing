@@ -86,7 +86,8 @@ Cypress.Commands.add('partialUpdateBooking', partialUpdateBooking);
 Cypress.Commands.add('deleteBooking', deleteBooking);
 
 declare global {
-  declare namespace Cypress {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace Cypress {
     interface Chainable {
       /**
        * @description Confirms whether the API is up and running.
