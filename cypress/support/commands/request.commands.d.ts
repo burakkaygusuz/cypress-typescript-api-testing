@@ -1,4 +1,4 @@
-import { Booking } from '../types';
+import { Booking } from '../../types';
 
 const healthCheck = () => {
   return cy.session('healthCheck', () => {
@@ -156,3 +156,5 @@ declare global {
     }
   }
 }
+
+export {};
