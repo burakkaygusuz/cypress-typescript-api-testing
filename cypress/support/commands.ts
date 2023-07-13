@@ -1,8 +1,10 @@
 import { Booking } from '../types';
 
 const healthCheck = () => {
-  return cy.request('/ping').then(({ status }) => {
-    expect(status).to.eq(201);
+  return cy.session('healthCheck', () => {
+    cy.request('/ping').then(({ status }) => {
+      expect(status).to.eq(201);
+    });
   });
 };
 
