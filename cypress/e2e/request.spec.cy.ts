@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { Booking } from '../types';
+import { generateBooking } from 'cypress/support/utils/data';
 
 before('Health Check', () => {
   cy.healthCheck();
@@ -15,19 +16,9 @@ describe('Booker', () => {
   let bookingId: string;
 
   it('should create a new booking', () => {
-    const booking: Booking = {
-      firstname: faker.person.firstName(),
-      lastname: faker.person.lastName(),
-      totalprice: faker.number.int({ min: 1, max: 100 }),
-      depositpaid: faker.datatype.boolean(),
-      bookingdates: {
-        checkin: faker.date.recent().toISOString().split('T')[0],
-        checkout: faker.date.soon().toISOString().split('T')[0],
-      },
-      additionalneeds: 'Breakfast',
-    };
+    const newBooking: Booking = generateBooking();
 
-    cy.createBooking(booking).then(({ status, body }) => {
+    cy.createBooking(newBooking).then(({ status, body }) => {
       expect(status).to.eq(200);
       expect(body).to.have.property('bookingid');
       bookingId = body.bookingid;
@@ -36,36 +27,26 @@ describe('Booker', () => {
   });
 
   it('should update the created booking', () => {
-    const booking: Booking = {
-      firstname: faker.person.firstName(),
-      lastname: faker.person.lastName(),
-      totalprice: faker.number.int({ min: 1, max: 100 }),
-      depositpaid: faker.datatype.boolean(),
-      bookingdates: {
-        checkin: faker.date.recent().toISOString().split('T')[0],
-        checkout: faker.date.soon().toISOString().split('T')[0],
-      },
-      additionalneeds: 'Dinner',
-    };
+    const updatedBooking: Booking = generateBooking();
 
-    cy.updateBooking(bookingId, booking).then(({ status, body }) => {
+    cy.updateBooking(bookingId, updatedBooking).then(({ status, body }) => {
       expect(status).to.eq(200);
-      expect(body.totalprice).to.eq(booking.totalprice);
-      expect(body.depositpaid).to.eq(booking.depositpaid);
-      expect(body.additionalneeds).to.eq(booking.additionalneeds);
+      expect(body.totalprice).to.eq(updatedBooking.totalprice);
+      expect(body.depositpaid).to.eq(updatedBooking.depositpaid);
+      expect(body.additionalneeds).to.eq(updatedBooking.additionalneeds);
     });
   });
 
-  const updatedBooking: { firstname: string; lastname: string } = {
+  const partiallyUpdatedBooking: { firstname: string; lastname: string } = {
     firstname: faker.person.firstName(),
     lastname: faker.person.lastName(),
   };
 
   it('should even update partially the updated booking', () => {
-    cy.partialUpdateBooking(bookingId, updatedBooking).then(({ status, body }) => {
+    cy.partialUpdateBooking(bookingId, partiallyUpdatedBooking).then(({ status, body }) => {
       expect(status).to.eq(200);
-      expect(body.firstname).to.eq(updatedBooking.firstname);
-      expect(body.lastname).to.eq(updatedBooking.lastname);
+      expect(body.firstname).to.eq(partiallyUpdatedBooking.firstname);
+      expect(body.lastname).to.eq(partiallyUpdatedBooking.lastname);
     });
   });
 
@@ -77,8 +58,8 @@ describe('Booker', () => {
 
   it('should find booking by firstname and lastname', () => {
     cy.getBooking('', {
-      firstname: updatedBooking.firstname,
-      lastname: updatedBooking.lastname,
+      firstname: partiallyUpdatedBooking.firstname,
+      lastname: partiallyUpdatedBooking.lastname,
     }).should(({ body }) => {
       expect(body[0].bookingid).to.eq(bookingId);
     });
