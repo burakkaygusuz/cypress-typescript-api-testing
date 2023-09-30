@@ -26,7 +26,6 @@
     "cypress": "^13.3.0",
     "esbuild": "^0.19.2",
     "eslint": "^8.50.0",
-    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-cypress": "^2.14.0",
     "prettier": "3.0.3",
     "ts-node": "^10.9.1",
