@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "incremental": true,
-    "target": "ES2016",
+    "target": "ES6",
     "module": "CommonJS",
     "esModuleInterop": true,
+    "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
+    "lib": ["ES6", "DOM"],
     "skipLibCheck": true,
-    "types": ["cypress"]
+    "types": ["cypress", "node"]
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules"]
