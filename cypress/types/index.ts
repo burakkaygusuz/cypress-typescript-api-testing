@@ -3,11 +3,9 @@ export type Booking = {
   lastname?: string;
   totalprice?: number;
   depositpaid?: boolean;
-  bookingdates?: BookingDates;
+  bookingdates?: {
+    checkin: string;
+    checkout: string;
+  };
   additionalneeds?: string;
-};
-
-type BookingDates = {
-  checkin: string;
-  checkout: string;
 };
