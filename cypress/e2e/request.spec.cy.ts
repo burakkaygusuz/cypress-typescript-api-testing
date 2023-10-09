@@ -13,7 +13,7 @@ beforeEach('Create a new token', () => {
 });
 
 describe('Booker', () => {
-  let bookingId: string;
+  let bookingId: number;
 
   it('should create a new booking', () => {
     const newBooking: Booking = generateBooking();
@@ -57,7 +57,7 @@ describe('Booker', () => {
   });
 
   it('should find booking by firstname and lastname', () => {
-    cy.getBooking('', {
+    cy.getBookingIds({
       firstname: partiallyUpdatedBooking.firstname,
       lastname: partiallyUpdatedBooking.lastname,
     }).should(({ body }) => {

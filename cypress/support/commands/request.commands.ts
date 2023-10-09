@@ -1,6 +1,6 @@
 import { Booking } from '../../types';
 
-const healthCheck = () => {
+const healthCheck = (): Cypress.Chainable<null> => {
   return cy.session('healthCheck', () => {
     cy.request('/ping').then(({ status }) => {
       expect(status).to.eq(201);
@@ -8,7 +8,7 @@ const healthCheck = () => {
   });
 };
 
-const createToken = (username: string, password: string) => {
+const createToken = (username: string, password: string): Cypress.Chainable<null> => {
   return cy.session([username, password], () => {
     cy.request({
       method: 'POST',
@@ -23,8 +23,21 @@ const createToken = (username: string, password: string) => {
   });
 };
 
+const getBookingIds = (qs?: {
+  firstname?: string;
+  lastname?: string;
+  checkin?: string;
+  checkout?: string;
+}) => {
+  return cy.request({
+    method: 'GET',
+    url: '/booking',
+    qs: qs,
+  });
+};
+
 const getBooking = (
-  bookingId: string,
+  bookingId: number,
   qs?: { firstname?: string; lastname?: string; checkin?: string; checkout?: string },
 ) => {
   return cy.request({
@@ -34,52 +47,88 @@ const getBooking = (
   });
 };
 
-const createBooking = (booking: Booking) => {
+const createBooking = (
+  booking: Booking,
+): Cypress.Chainable<
+  Cypress.Response<{
+    bookingid: number;
+    booking: {
+      firstname: string;
+      lastname: string;
+      totalprice: number;
+      depositpaid: boolean;
+      bookingdates: {
+        checkin: string;
+        checkout: string;
+      };
+      additionalneeds: 'Breakfast' | 'Launch' | 'Dinner';
+    };
+  }>
+> => {
   return cy.request({
     method: 'POST',
     url: '/booking',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: booking,
   });
 };
 
-const updateBooking = (bookingId: string, booking: Booking) => {
+const updateBooking = (
+  bookingId: number,
+  booking: Booking,
+): Cypress.Chainable<
+  Cypress.Response<{
+    firstname: string;
+    lastname: string;
+    totalprice: number;
+    depositpaid: boolean;
+    bookingdates: {
+      checkin: string;
+      checkout: string;
+    };
+    additionalneeds: 'Breakfast' | 'Launch' | 'Dinner';
+  }>
+> => {
   return cy.request({
     method: 'PUT',
     url: `/booking/${bookingId}`,
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: booking,
   });
 };
 
-const partialUpdateBooking = (bookingId: string, booking: Booking) => {
+const partialUpdateBooking = (
+  bookingId: number,
+  booking: Booking,
+): Cypress.Chainable<
+  Cypress.Response<{
+    firstname: string;
+    lastname: string;
+    totalprice: number;
+    depositpaid: boolean;
+    bookingdates: {
+      checkin: string;
+      checkout: string;
+    };
+    additionalneeds: 'Breakfast' | 'Launch' | 'Dinner';
+  }>
+> => {
   return cy.request({
     method: 'PATCH',
     url: `/booking/${bookingId}`,
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: booking,
   });
 };
 
-const deleteBooking = (bookingId: string) => {
+const deleteBooking = (bookingId: number): Cypress.Chainable<Cypress.Response<null>> => {
   return cy.request({
     method: 'DELETE',
     url: `/booking/${bookingId}`,
-    headers: {
-      'Content-Type': 'application/json',
-    },
   });
 };
 
 Cypress.Commands.add('healthCheck', healthCheck);
 Cypress.Commands.add('createToken', createToken);
 Cypress.Commands.add('getBooking', getBooking);
+Cypress.Commands.add('getBookingIds', getBookingIds);
 Cypress.Commands.add('createBooking', createBooking);
 Cypress.Commands.add('updateBooking', updateBooking);
 Cypress.Commands.add('partialUpdateBooking', partialUpdateBooking);
@@ -108,7 +157,7 @@ declare global {
       createToken: typeof createToken;
 
       /**
-       * @description Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.
+       * @description Returns a specific booking based upon the booking id provided.
        * @param {string} bookingId - The booking id to search for.
        * @param {object} queryParams - The query parameters to search for.
        * @example
@@ -116,6 +165,15 @@ declare global {
        * @see https://restful-booker.herokuapp.com/apidoc/index.html#api-Booking-GetBooking
        */
       getBooking: typeof getBooking;
+
+      /**
+       * @description Returns the ids of all the bookings that exist within the API. Can take optional query strings to search and return a subset of booking ids.
+       * @param {object} queryParams - The query parameters to search for.
+       * @example
+       *    cy.getBookingIds({'firstname': 'Jim', 'lastname': 'Brown'})
+       * @see https://restful-booker.herokuapp.com/apidoc/index.html#api-Booking-GetBookings
+       */
+      getBookingIds: typeof getBookingIds;
 
       /**
        * @description Create a new booking in the API.
