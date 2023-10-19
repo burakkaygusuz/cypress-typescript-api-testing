@@ -28,7 +28,7 @@ const getBookingIds = (qs?: {
   lastname?: string;
   checkin?: string;
   checkout?: string;
-}) => {
+}): Cypress.Chainable<Cypress.Response<Array<{ bookingId: string }>>> => {
   return cy.request({
     method: 'GET',
     url: '/booking',
@@ -39,7 +39,7 @@ const getBookingIds = (qs?: {
 const getBooking = (
   bookingId: number,
   qs?: { firstname?: string; lastname?: string; checkin?: string; checkout?: string },
-) => {
+): Cypress.Chainable<Cypress.Response<Booking>> => {
   return cy.request({
     method: 'GET',
     url: `/booking/${bookingId}`,
@@ -52,17 +52,7 @@ const createBooking = (
 ): Cypress.Chainable<
   Cypress.Response<{
     bookingid: number;
-    booking: {
-      firstname: string;
-      lastname: string;
-      totalprice: number;
-      depositpaid: boolean;
-      bookingdates: {
-        checkin: string;
-        checkout: string;
-      };
-      additionalneeds: 'Breakfast' | 'Launch' | 'Dinner';
-    };
+    booking: Booking;
   }>
 > => {
   return cy.request({
@@ -75,19 +65,7 @@ const createBooking = (
 const updateBooking = (
   bookingId: number,
   booking: Booking,
-): Cypress.Chainable<
-  Cypress.Response<{
-    firstname: string;
-    lastname: string;
-    totalprice: number;
-    depositpaid: boolean;
-    bookingdates: {
-      checkin: string;
-      checkout: string;
-    };
-    additionalneeds: 'Breakfast' | 'Launch' | 'Dinner';
-  }>
-> => {
+): Cypress.Chainable<Cypress.Response<Booking>> => {
   return cy.request({
     method: 'PUT',
     url: `/booking/${bookingId}`,
@@ -98,19 +76,7 @@ const updateBooking = (
 const partialUpdateBooking = (
   bookingId: number,
   booking: Booking,
-): Cypress.Chainable<
-  Cypress.Response<{
-    firstname: string;
-    lastname: string;
-    totalprice: number;
-    depositpaid: boolean;
-    bookingdates: {
-      checkin: string;
-      checkout: string;
-    };
-    additionalneeds: 'Breakfast' | 'Launch' | 'Dinner';
-  }>
-> => {
+): Cypress.Chainable<Cypress.Response<Booking>> => {
   return cy.request({
     method: 'PATCH',
     url: `/booking/${bookingId}`,
