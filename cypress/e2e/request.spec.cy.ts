@@ -6,7 +6,7 @@ before('Health Check', () => {
   cy.healthCheck();
 });
 
-beforeEach('Create a new token', () => {
+beforeEach('creates a new token', () => {
   const username: string = Cypress.env('username');
   const password: string = Cypress.env('password');
   cy.createToken(username, password);
@@ -15,7 +15,7 @@ beforeEach('Create a new token', () => {
 describe('Booker', () => {
   let bookingId: number;
 
-  it('should create a new booking', () => {
+  it('creates a new booking', () => {
     const newBooking: Booking = generateBooking();
 
     cy.createBooking(newBooking).then(({ status, body }) => {
@@ -26,7 +26,7 @@ describe('Booker', () => {
     });
   });
 
-  it('should update the created booking', () => {
+  it('updates the created booking', () => {
     const updatedBooking: Booking = generateBooking();
 
     cy.updateBooking(bookingId, updatedBooking).then(({ status, body }) => {
@@ -42,7 +42,7 @@ describe('Booker', () => {
     lastname: faker.person.lastName(),
   };
 
-  it('should even update partially the updated booking', () => {
+  it('updates even partially the updated booking', () => {
     cy.partialUpdateBooking(bookingId, partiallyUpdatedBooking).then(({ status, body }) => {
       expect(status).to.eq(200);
       expect(body.firstname).to.eq(partiallyUpdatedBooking.firstname);
@@ -50,13 +50,13 @@ describe('Booker', () => {
     });
   });
 
-  it('should recieve a booking information by id', () => {
+  it('gets the booking by id', () => {
     cy.getBooking(bookingId).then(({ status }) => {
       expect(status).to.eq(200);
     });
   });
 
-  it('should find booking by firstname and lastname', () => {
+  it('gets the booking by firstname and lastname', () => {
     cy.getBookingIds({
       firstname: partiallyUpdatedBooking.firstname,
       lastname: partiallyUpdatedBooking.lastname,
@@ -65,7 +65,7 @@ describe('Booker', () => {
     });
   });
 
-  it('should delete the created booking by id', () => {
+  it('deletes the created booking by id', () => {
     cy.deleteBooking(bookingId).its('status').should('eq', 201);
   });
 });
