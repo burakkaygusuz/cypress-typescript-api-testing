@@ -28,7 +28,7 @@ const getBookingIds = (qs?: {
   lastname?: string;
   checkin?: string;
   checkout?: string;
-}): Cypress.Chainable<Cypress.Response<Array<{ bookingId: string }>>> => {
+}): Cypress.Chainable<Cypress.Response<Array<{ bookingid: number }>>> => {
   return cy.request({
     method: 'GET',
     url: '/booking',
