@@ -17,7 +17,8 @@ const createToken = (username: string, password: string): Cypress.Chainable<null
         username: username,
         password: password,
       },
-    }).then(({ body }) => {
+    }).then((response) => {
+      const body: { token: string } = response.body;
       cy.setCookie('token', body.token);
     });
   });
