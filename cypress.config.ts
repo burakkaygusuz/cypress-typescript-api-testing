@@ -1,8 +1,6 @@
 import { defineConfig } from 'cypress';
-import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
 
 const setupNodeEvents = (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) => {
-  on('file:preprocessor', createBundler());
   return config;
 };
 
