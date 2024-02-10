@@ -1,6 +1,6 @@
 import { Booking } from '../../types';
 
-const healthCheck = (): Cypress.Chainable<null> => {
+const healthCheck = (): Cypress.Chainable<void> => {
   return cy.session('healthCheck', () => {
     cy.request('/ping').then(({ status }) => {
       expect(status).to.eq(201);
@@ -8,7 +8,7 @@ const healthCheck = (): Cypress.Chainable<null> => {
   });
 };
 
-const createToken = (username: string, password: string): Cypress.Chainable<null> => {
+const createToken = (username: string, password: string): Cypress.Chainable<void> => {
   return cy.session([username, password], () => {
     cy.request({
       method: 'POST',
@@ -85,7 +85,7 @@ const partialUpdateBooking = (
   });
 };
 
-const deleteBooking = (bookingId: number): Cypress.Chainable<Cypress.Response<null>> => {
+const deleteBooking = (bookingId: number): Cypress.Chainable<Cypress.Response<void>> => {
   return cy.request({
     method: 'DELETE',
     url: `/booking/${bookingId}`,
