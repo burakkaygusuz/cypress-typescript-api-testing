@@ -21,12 +21,11 @@
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
     "@types/node": "^20.11.17",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
     "cypress": "^13.6.4",
     "eslint": "^8.56.0",
     "eslint-plugin-cypress": "^2.15.1",
     "prettier": "3.2.5",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^7.0.1"
   }
 }
