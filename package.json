@@ -23,7 +23,7 @@
     "@types/node": "^20.11.29",
     "cypress": "^13.7.0",
     "eslint": "^8.57.0",
-    "eslint-plugin-cypress": "^2.15.1",
+    "eslint-plugin-cypress": "^2.15.2",
     "prettier": "3.2.5",
     "typescript": "^5.4.2",
     "typescript-eslint": "^7.3.1"
