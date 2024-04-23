@@ -15,8 +15,8 @@ const createToken = (username: string, password: string): Cypress.Chainable<void
       url: '/auth',
       body: {
         username: username,
-        password: password,
-      },
+        password: password
+      }
     }).then((response) => {
       const body: { token: string } = response.body;
       cy.setCookie('token', body.token);
@@ -33,23 +33,23 @@ const getBookingIds = (qs?: {
   return cy.request({
     method: 'GET',
     url: '/booking',
-    qs: qs,
+    qs: qs
   });
 };
 
 const getBooking = (
   bookingId: number,
-  qs?: { firstname?: string; lastname?: string; checkin?: string; checkout?: string },
+  qs?: { firstname?: string; lastname?: string; checkin?: string; checkout?: string }
 ): Cypress.Chainable<Cypress.Response<Booking>> => {
   return cy.request({
     method: 'GET',
     url: `/booking/${bookingId}`,
-    qs: qs,
+    qs: qs
   });
 };
 
 const createBooking = (
-  booking: Booking,
+  booking: Booking
 ): Cypress.Chainable<
   Cypress.Response<{
     bookingid: number;
@@ -59,36 +59,36 @@ const createBooking = (
   return cy.request({
     method: 'POST',
     url: '/booking',
-    body: booking,
+    body: booking
   });
 };
 
 const updateBooking = (
   bookingId: number,
-  booking: Booking,
+  booking: Booking
 ): Cypress.Chainable<Cypress.Response<Booking>> => {
   return cy.request({
     method: 'PUT',
     url: `/booking/${bookingId}`,
-    body: booking,
+    body: booking
   });
 };
 
 const partialUpdateBooking = (
   bookingId: number,
-  booking: Booking,
+  booking: Booking
 ): Cypress.Chainable<Cypress.Response<Booking>> => {
   return cy.request({
     method: 'PATCH',
     url: `/booking/${bookingId}`,
-    body: booking,
+    body: booking
   });
 };
 
 const deleteBooking = (bookingId: number): Cypress.Chainable<Cypress.Response<void>> => {
   return cy.request({
     method: 'DELETE',
-    url: `/booking/${bookingId}`,
+    url: `/booking/${bookingId}`
   });
 };
 

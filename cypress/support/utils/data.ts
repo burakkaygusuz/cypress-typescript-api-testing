@@ -9,8 +9,8 @@ export const generateBooking = (): Booking => {
     depositpaid: faker.datatype.boolean(),
     bookingdates: {
       checkin: faker.date.recent().toISOString().split('T')[0],
-      checkout: faker.date.soon().toISOString().split('T')[0],
+      checkout: faker.date.soon().toISOString().split('T')[0]
     },
-    additionalneeds: 'Breakfast' || 'Launch' || 'Dinner',
+    additionalneeds: 'Breakfast' || 'Launch' || 'Dinner'
   };
 };

@@ -11,8 +11,8 @@ export default defineConfig({
     video: false,
     env: {
       username: 'admin',
-      password: 'password123',
+      password: 'password123'
     },
-    setupNodeEvents,
-  },
+    setupNodeEvents
+  }
 });

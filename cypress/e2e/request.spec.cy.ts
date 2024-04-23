@@ -39,7 +39,7 @@ describe('Booker', () => {
 
   const partiallyUpdatedBooking: { firstname: string; lastname: string } = {
     firstname: faker.person.firstName(),
-    lastname: faker.person.lastName(),
+    lastname: faker.person.lastName()
   };
 
   it('updates even partially the updated booking', () => {
@@ -59,7 +59,7 @@ describe('Booker', () => {
   it('gets the booking by firstname and lastname', () => {
     cy.getBookingIds({
       firstname: partiallyUpdatedBooking.firstname,
-      lastname: partiallyUpdatedBooking.lastname,
+      lastname: partiallyUpdatedBooking.lastname
     }).should(({ body }) => {
       expect(body[0].bookingid).to.eq(bookingId);
     });
