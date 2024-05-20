@@ -19,13 +19,13 @@
   "author": "Burak Kaygusuz",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
     "@faker-js/faker": "^8.4.1",
     "@types/node": "^20.12.11",
     "cypress": "^13.9.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.3.0",
     "eslint-plugin-cypress": "^3.2.0",
     "prettier": "3.2.5",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.9.0"
+    "typescript": "^5.4.5"
   }
 }
