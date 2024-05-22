@@ -3,9 +3,6 @@ const compat = new FlatCompat();
 export default [
   ...compat.config({
     extends: ['plugin:cypress/recommended'],
-    ignorePatterns: ['node_modules'],
-    rules: {
-      '@typescript-eslint/no-explicit-any': 'off'
-    }
+    ignorePatterns: ['node_modules']
   })
 ];
