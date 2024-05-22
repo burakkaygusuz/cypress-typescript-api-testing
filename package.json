@@ -22,7 +22,7 @@
     "@eslint/eslintrc": "^3.1.0",
     "@faker-js/faker": "^8.4.1",
     "@types/node": "^20.12.12",
-    "cypress": "^13.9.0",
+    "cypress": "^13.10.0",
     "eslint": "^9.3.0",
     "eslint-plugin-cypress": "^3.2.0",
     "prettier": "3.2.5",
