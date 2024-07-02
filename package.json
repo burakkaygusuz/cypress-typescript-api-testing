@@ -26,6 +26,6 @@
     "eslint": "^9.4.0",
     "eslint-plugin-cypress": "^3.3.0",
     "prettier": "3.2.5",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.3"
   }
 }
