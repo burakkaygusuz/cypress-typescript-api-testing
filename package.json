@@ -19,7 +19,6 @@
   "author": "Burak Kaygusuz",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/eslintrc": "^3.1.0",
     "@faker-js/faker": "^9.0.3",
     "@types/node": "^20.14.2",
     "cypress": "^13.15.0",
