@@ -7,5 +7,5 @@ export type Booking = {
     checkin: string;
     checkout: string;
   };
-  additionalneeds?: 'Breakfast' | 'Launch' | 'Dinner';
+  additionalneeds?: string;
 };

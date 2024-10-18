@@ -11,6 +11,6 @@ export const generateBooking = (): Booking => {
       checkin: faker.date.recent().toISOString().split('T')[0],
       checkout: faker.date.soon().toISOString().split('T')[0]
     },
-    additionalneeds: 'Breakfast' || 'Launch' || 'Dinner'
+    additionalneeds: faker.helpers.arrayElement(['Breakfast', 'Launch', 'Dinner'])
   };
 };
