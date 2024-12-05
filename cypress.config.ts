@@ -13,6 +13,7 @@ export default defineConfig({
       username: 'admin',
       password: 'password123'
     },
+    defaultBrowser: 'electron',
     setupNodeEvents
   }
 });
