@@ -4,3 +4,4 @@ node_modules/
 .idea/
 cypress/videos
 cypress/screenshots
+.DS_Store
