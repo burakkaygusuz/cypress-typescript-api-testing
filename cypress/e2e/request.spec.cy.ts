@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
-import { Booking } from '../types';
-import { generateBooking } from 'cypress/support/utils/data';
+import { Booking } from '@/types';
+import { generateBooking } from '@/support/utils/data';
 
 before('Health Check', () => {
   cy.healthCheck();

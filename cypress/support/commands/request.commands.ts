@@ -1,4 +1,4 @@
-import { Booking } from '../../types';
+import { Booking } from '@/types';
 
 const healthCheck = (): Cypress.Chainable<void> => {
   return cy.session('healthCheck', () => {

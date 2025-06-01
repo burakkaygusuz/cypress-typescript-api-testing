@@ -1,5 +1,5 @@
+import { Booking } from '@/types';
 import { faker } from '@faker-js/faker';
-import { Booking } from 'cypress/types';
 
 export const generateBooking = (): Booking => {
   return {
