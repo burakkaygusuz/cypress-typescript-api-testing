@@ -5,7 +5,8 @@
   "scripts": {
     "open": "cypress open --e2e --browser electron",
     "test": "cypress run --e2e",
-    "pretty": "prettier --write \"./**/*.{yml,ts,tsx,json}\""
+    "pretty": "prettier --write \"./**/*.{yml,ts,tsx,json}\"",
+    "lint": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "eslint": "^9.29.0",
     "eslint-plugin-chai-friendly": "^1.1.0",
     "eslint-plugin-cypress": "^5.1.0",
+    "globals": "^16.2.0",
     "prettier": "3.6.0",
     "typescript-eslint": "^8.34.1"
   }
