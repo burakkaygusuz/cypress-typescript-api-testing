@@ -20,7 +20,7 @@
   "author": "Burak Kaygusuz",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/js": "^9.29.0",
+    "@eslint/js": "^9.30.1",
     "@faker-js/faker": "^9.8.0",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^24.0.3",
