@@ -20,9 +20,9 @@
   "author": "Burak Kaygusuz",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/js": "^9.35.0",
+    "@eslint/js": "^9.37.0",
     "@faker-js/faker": "^10.0.0",
-    "@types/eslint__js": "^8.42.3",
+    "@types/eslint__js": "^9.14.0",
     "@types/node": "^24.7.0",
     "cypress": "^15.4.0",
     "eslint": "^9.35.0",
